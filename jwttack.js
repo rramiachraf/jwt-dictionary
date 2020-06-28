@@ -5,6 +5,7 @@ const { eachLine } = require("line-reader");
 const { stdout } = require("process");
 const { existsSync } = require("fs");
 const log = require("log-update");
+const notifier = require("node-notifier");
 
 const { token, file } = argv;
 let counter = 0;
@@ -18,9 +19,13 @@ if (!existsSync(file)) {
 }
 
 eachLine(file, async (line, last, cb) => {
-  const data = await verifyJWT(token, line);
-  if (data) {
-    console.log(data);
+  const secret = await verifyJWT(token, line);
+  if (secret) {
+    console.log("Secret is", secret);
+    notifier.notify({
+      title: "Secret key found",
+      message: secret,
+    });
     cb(false);
   } else {
     counter += 1;
@@ -33,6 +38,6 @@ const verifyJWT = async (token, secret) => {
   try {
     const data = await verify(token, secret);
     console.log(green.inverse("SUCCESS"));
-    return `Secret is "${secret}"`;
+    return secret;
   } catch ({ message }) {}
 };
