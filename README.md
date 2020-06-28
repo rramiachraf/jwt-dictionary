@@ -14,6 +14,7 @@ Brute force JSON Web Tokens against a dictionary text file.
 | ----------- | ----------- |
 | 100K      | 34.92 seconds       |
 | 380K      | 2 minutes |
+| 1M        | 9 minutes, 50 seconds |
 
 
 ### Build
