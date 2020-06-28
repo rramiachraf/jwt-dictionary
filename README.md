@@ -1,5 +1,5 @@
 # jwttack
-Brute force JSON Web Tokens against a dictionary text file.
+Brute force JSON Web Tokens against a dictionary text file with notifications built in.
 
 ### Flags
 ---
