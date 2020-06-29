@@ -2,7 +2,6 @@ const { argv } = require("yargs");
 const { red, inverse, green, cyan } = require("chalk");
 const { verify } = require("jsonwebtoken");
 const { eachLine } = require("line-reader");
-const { stdout } = require("process");
 const { existsSync } = require("fs");
 const log = require("log-update");
 const notifier = require("node-notifier");
